@@ -5,6 +5,7 @@ import {
   CheckHoverIcon,
 } from 'assets/images';
 import clsx from 'clsx';
+import { useRef } from 'react';
 
 const StyledTaskItem = styled.div`
   min-height: 52px;
@@ -102,6 +103,17 @@ const StyledTaskItem = styled.div`
 `;
 
 const TodoItem = ({ todo, onSave, onDelete, onToggleDone, onChangeMode }) => {
+  const inputRef = useRef(null);
+  const handleKeyDone = (event) => {
+    if (inputRef.current.value.length > 0 && event.key === 'Enter') {
+      onSave?.({ id: todo.id, title: inputRef.current.value });
+    }
+
+    if (event.key === 'Escape') {
+      onChangeMode?.({ id: todo.id, isEdit: false });
+    }
+  };
+
   return (
     <StyledTaskItem
       className={clsx('', { done: todo.isDone, edit: todo.isEdit })}
@@ -118,7 +130,13 @@ const TodoItem = ({ todo, onSave, onDelete, onToggleDone, onChangeMode }) => {
           onChangeMode?.({ id: todo.id, isEdit: true });
         }}
       >
-        <span className="task-item-body-text">{todo.title}</span>
+        <span
+          ref={inputRef}
+          className="task-item-body-text"
+          onKeyDown={handleKeyDone}
+        >
+          {todo.title}
+        </span>
         <input className="task-item-body-input" value={todo.title} />
       </div>
       <div className="task-item-action ">
