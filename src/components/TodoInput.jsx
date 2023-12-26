@@ -80,6 +80,11 @@ const TodoInput = ({ inputValue, onChange, onKeyDone, onAddTodo }) => {
           onChange={(event) => {
             onChange?.(event.target.value);
           }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              onKeyDone?.();
+            }
+          }}
         />
       </StyledInputContainer>
       <StyledAddTodoActionContainer>
