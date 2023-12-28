@@ -73,6 +73,7 @@ const LoginPage = () => {
 
       <AuthInputContainer>
         <AuthInput
+          type="password"
           label="密碼"
           placeholder="請輸入密碼"
           value={password}
