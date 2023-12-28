@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         setPayload(null);
       }
     };
-    return checkTokenIsValid();
+    checkTokenIsValid();
   }, [pathname]);
 
   return (
