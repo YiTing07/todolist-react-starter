@@ -1,6 +1,8 @@
 # Todo List with React
 
-**透過 React 框架建立待辦清單的平台。**
+**透過 React 框架建立待辦清單的平台。**  
+
+測試帳號、密碼：member0083
 
 ## 產品功能
 * 使用者可以查看自己所有 todo
